@@ -1,0 +1,112 @@
+<div
+	mat-dialog-content
+	class="bg-black"
+>
+	<form [formGroup]="photoForm">
+		<div class="gird place-items-center w-full h-full">
+			<div class="mb-6">
+				<label
+					for="tag-input"
+					class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+					>What's your tag?</label
+				>
+				<input
+					matInput
+					formControlName="tag"
+					type="text"
+					id="tag-input"
+					class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray dark:border-gray-600 dark:placeholder-gray-400"
+				/>
+				<p
+					class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+					id="file_input_help"
+				>
+					(Max. 10 char)
+				</p>
+			</div>
+
+			<div class="mb-6">
+				<label
+					for="description-input"
+					class="block mb-2 text-sm font-medium dark:text-white"
+					>What's your description?</label
+				>
+				<input
+					matInput
+					formControlName="description"
+					type="text"
+					id="description-input"
+					class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray dark:border-gray-600 dark:placeholder-gray-400"
+				/>
+				<p
+					class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+					id="file_input_help"
+				>
+					(Max. 60 char)
+				</p>
+			</div>
+
+			<div>
+				<label
+					class="block mb-2 text-sm font-medium dark:text-white"
+					for="file_input"
+					>Upload Image</label
+				>
+				<input
+					class="block w-full text-sm border border-gray-300 rounded cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray dark:border-gray-600 dark:placeholder-gray-400"
+					id="file_input"
+					type="file"
+					formControlName="img"
+					(change)="onChange($event)"
+					required
+				/>
+				<div
+					*ngIf="progress"
+					class="w-full bg-gray-200 rounded dark:bg-gray mt-1"
+				>
+					<div
+						class="bg-gray-600 text-xs dark:bg-gray-300 font-medium text-black-100 text-center p-0.5 leading-none rounded"
+						[style.width.%]="onLoading()"
+					>
+						{{ onLoading() }}
+					</div>
+				</div>
+
+				<p
+					*ngIf="!progress"
+					class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+					id="file_input_help"
+				>
+					JPEG, PNG, JPG or GIF
+				</p>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div mat-dialog-actions>
+	<button
+		mat-button
+		*ngIf="!progress"
+		(click)="onCancel()"
+	>
+		No Thanks
+	</button>
+
+	<button
+		mat-button
+		*ngIf="!progress"
+		(click)="onUpload()"
+	>
+		Upload
+	</button>
+
+	<button
+		mat-button
+		*ngIf="isLoaded"
+		[mat-dialog-close]="photoForm"
+		cdkFocusInitial
+	>
+		Ok
+	</button>
+</div>

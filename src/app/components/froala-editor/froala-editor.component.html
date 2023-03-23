@@ -1,0 +1,21 @@
+<div class="grid place-items-center w-screen h-screen">
+	<div
+		id="froala-editor"
+		class="grid forla-editor max-w-2xl"
+	>
+		<div
+			[froalaEditor]="options"
+			[(froalaModel)]="froalaData.content"
+		></div>
+		<div class="flex justify-between items-center">
+			<button
+				class="rounded bg-black hover:bg-gray-500 w-1/6 text-white text-lg ml-4 py-2 px-3 my-3 uppercase"
+				(click)="setContent()"
+			>
+				Save
+			</button>
+
+			<p class="date font-semibold">{{ lastModification }}</p>
+		</div>
+	</div>
+</div>

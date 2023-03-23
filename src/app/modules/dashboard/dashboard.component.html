@@ -1,0 +1,30 @@
+<div class="bg-black">
+	<div
+		class="relative overflow-hidden bg-cover bg-no-repeat bg-center mb-1 mt-0"
+		style="background-image: url('https://source.unsplash.com/random'); height: 350px"
+	>
+		<div
+			class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"
+			style="background-color: rgba(0, 0, 0, 0.5)"
+		>
+			<div class="flex h-full items-center">
+				<div class="px-6 text-white md:px-12">
+					<h1 class="mb-8 text-5xl font-bold">Capture</h1>
+					<h3 class="mb-8 text-2xl">
+						The internet’s source for visuals. Powered by creators everywhere.
+					</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid grid-cols-2 md:grid-cols-3 gap-y-12 pt-6 mx-auto">
+		<ng-container *ngIf="photos | async as photos">
+			<dashboard-photo
+				*ngFor="let userPhoto of photos"
+				[userPhoto]="userPhoto"
+			>
+			</dashboard-photo>
+		</ng-container>
+	</div>
+</div>

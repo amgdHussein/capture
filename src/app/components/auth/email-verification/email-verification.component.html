@@ -1,0 +1,39 @@
+<div class="grid place-items-center mt-12 md:gird-col w-screen">
+	<div class="grid place-items-center mt-32">
+		<div class="authBlock">
+			<p class="mb-4 mt-4 text-3xl font-bold">Thank You for Registering</p>
+			<div
+				class="formGroup"
+				*ngIf="currentUser as user"
+			>
+				<p>
+					We have sent a confirmation email to <strong>{{ user.email }}</strong
+					>.
+				</p>
+			</div>
+
+			<!-- Calling SendVerificationMail() method using authService Api -->
+			<div class="mt-6">
+				<p class="">Please check your email and click on the link to verfiy your email address.</p>
+				<button
+					type="button"
+					class="inline-flex items-center justify-center h-12 w-full mb-1 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-800 focus:shadow-outline focus:outline-none"
+					(click)="sendVerificationMail()"
+				>
+					<i class="fas fa-redo-alt"></i>
+					Resend Verification Email
+				</button>
+
+				<div class="flex">
+					<p>Go back to?</p>
+					<a
+						routerLink="/sign-in"
+						class="block ml-1 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600 justify-end"
+					>
+						<p class="text-primary underline text-gray-500">Sign in here</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
